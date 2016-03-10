@@ -2,6 +2,8 @@ package com.iketang.icouse;
 
 import android.support.v4.app.Fragment;
 
+import butterknife.ButterKnife;
+
 /**
  * Created by Administrator on 2016/3/9.
  */
