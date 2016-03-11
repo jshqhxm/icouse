@@ -1,5 +1,6 @@
 package com.iketang.icouse;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -62,14 +63,10 @@ public class CourseListFragment extends BaseFragment {
 
         mAdapter.setOnClickListener(new CourseListRvAdapter.OnClickListener() {
             @Override
-            public void onClick(View view,  final int position,  final String contentId) {
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Toast.makeText(getActivity(), "position  == " + position + "  contentId == " + contentId, Toast.LENGTH_LONG);
+            public void onClick(View view, int position, String contentId) {
 
-                    }
-                });
+                Toast.makeText(getActivity(), "position  == " + position + "  contentId == " + contentId, Toast.LENGTH_LONG).show();
+
 
             }
         });
