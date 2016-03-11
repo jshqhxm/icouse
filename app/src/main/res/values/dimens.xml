@@ -7,4 +7,7 @@
 
     <dimen name="rv_margin">8dp</dimen>
     <dimen name="rv_bottom">8dp</dimen>
+
+    <dimen name="shape">2dp</dimen>
+
 </resources>
