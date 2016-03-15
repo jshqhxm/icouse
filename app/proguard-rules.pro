@@ -15,3 +15,11 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+
+#TakingDATA
+-keep public class com.tendcloud.tenddata.** { public protected *;}
+-keepclassmembers class ** {
+     public void *(***);
+ }
+-keep class com.talkingdata.sdk.TalkingDataSDK {public *;}
+-keep class com.apptalkingdata.** {*;}

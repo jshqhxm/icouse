@@ -1,16 +1,24 @@
 package com.iketang.icouse;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.tendcloud.tenddata.TCAgent;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class TestActivity extends AppCompatActivity {
 
+    private Context mContext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
+        mContext = this;
     }
 
 
@@ -30,6 +38,11 @@ public class TestActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Map<String, String> kv = new HashMap<String, String>();
+            kv.put("商品类型", "休闲食品");
+            kv.put("价格","5～10元" );
+            TCAgent.onEvent(mContext, "New Activity", "TestActivity"  ,kv);
+
             return true;
         }
 
