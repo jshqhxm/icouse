@@ -1,4 +1,4 @@
-package com.iketang.icouse;
+package com.iketang.icouse.ui.activity;
 
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.iketang.icouse.R;
 import com.tendcloud.tenddata.TCAgent;
 
 import java.util.HashMap;

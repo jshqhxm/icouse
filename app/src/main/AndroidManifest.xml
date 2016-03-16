@@ -18,9 +18,10 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:name=".KetangApplication"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.activity.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,8 +30,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".TestActivity"
+            android:name=".ui.activity.TestActivity"
             android:label="@string/title_activity_test" >
+        </activity>
+        <activity android:name=".ui.activity.LoginActivity">
+
         </activity>
 
 

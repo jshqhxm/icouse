@@ -1,4 +1,4 @@
-package com.iketang.icouse;
+package com.iketang.icouse.ui.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.iketang.icouse.R;
 import com.tendcloud.tenddata.TCAgent;
 
 public class MainActivity extends AppCompatActivity {
@@ -75,6 +76,12 @@ public class MainActivity extends AppCompatActivity {
 
             return true;
         }
+        if (id == R.id.action_login){
+            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            startActivity(intent);
+            return  true;
+        }
+
 
         return super.onOptionsItemSelected(item);
     }

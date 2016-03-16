@@ -1,4 +1,4 @@
-package com.iketang.icouse;
+package com.iketang.icouse.ui.fragment;
 
 import android.support.v4.app.Fragment;
 

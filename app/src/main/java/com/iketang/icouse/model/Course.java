@@ -1,4 +1,4 @@
-package com.iketang.icouse;
+package com.iketang.icouse.model;
 
 /**
  * 项目名称 icouse
