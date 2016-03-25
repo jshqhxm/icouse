@@ -2,40 +2,90 @@ package com.iketang.icouse.ui.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.iketang.icouse.R;
+import com.iketang.icouse.ui.adapter.IcMainFmAdapter;
 import com.tendcloud.tenddata.TCAgent;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Context mContext;
+    private Toolbar toolbar;
 
+    @Bind(R.id.fragment_main_tab_layout)
+    TabLayout mTabLayout;
+    @Bind(R.id.viewpager)
+    ViewPager mViewPager;
+
+    public IcMainFmAdapter adapter;
+
+    private Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
         mContext = this;
-        findViewById(R.id.fab).setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Snackbar.make(v,"FAB", Snackbar.LENGTH_LONG)
-                        .setAction("cancel", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                //这里的单击事件代表点击消除Action后的响应事件
 
-                            }
-                        })
-                        .show();
-            }
-        });
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            /**https://developer.android.com/intl/zh-cn/samples/ImmersiveMode/src/com.example.android.immersivemode/ImmersiveModeFragment.html
+             * https://developer.android.com/training/system-ui/navigation.html*/
+            Window window = getWindow();
+            // Translucent status bar
+            window.setFlags(
+                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
+                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            // Translucent navigation bar
+            window.setFlags(
+                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION,
+                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+            int colorPrimaryDark = ContextCompat.getColor(MainActivity.this, R.color.colorPrimaryDark);
+            window.setStatusBarColor(colorPrimaryDark);
+        }
+
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(true);
+
+        Drawable upArrow = toolbar.getNavigationIcon();
+        upArrow.setColorFilter(Color.parseColor("#FFFFFF"), PorterDuff.Mode.DST_ATOP);
+        getSupportActionBar().setHomeAsUpIndicator(upArrow);
+
+
+        mTabLayout.setTabMode(TabLayout.MODE_FIXED);
+        if (adapter == null)
+            adapter = new IcMainFmAdapter(this.getSupportFragmentManager());
+        mViewPager.setAdapter(adapter);
+        mViewPager.setOffscreenPageLimit(4);
+        mTabLayout.setupWithViewPager(mViewPager);
+
+
+
+
+
+
+
 
     }
 
@@ -76,10 +126,10 @@ public class MainActivity extends AppCompatActivity {
 
             return true;
         }
-        if (id == R.id.action_login){
+        if (id == R.id.action_login) {
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
             startActivity(intent);
-            return  true;
+            return true;
         }
 
 

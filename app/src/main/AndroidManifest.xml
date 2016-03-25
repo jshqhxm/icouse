@@ -38,7 +38,6 @@
         </activity>
 
 
-
         <meta-data android:name="TD_APP_ID" android:value="C4F09C6439120F06A4C282827EABD960" />
         <meta-data android:name="TD_CHANNEL_ID" android:value="DemoTest"/>
     </application>
