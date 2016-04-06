@@ -25,6 +25,12 @@ public class IcMainFmAdapter extends FragmentPagerAdapter {
         switch (position){
             case 0:
                 return  new IcRecommendFragment();
+            case 1:
+                return  new IcRecommendFragment();
+            case 2:
+                return  new IcRecommendFragment();
+            case 3:
+                return  new IcRecommendFragment();
         }
 
         return null;
@@ -35,5 +41,10 @@ public class IcMainFmAdapter extends FragmentPagerAdapter {
     public int getCount() {
 
         return IcString.MAIN_TITLES.length;
+    }
+
+    @Override
+    public CharSequence getPageTitle(int position) {
+        return IcString.MAIN_TITLES[position];
     }
 }
