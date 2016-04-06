@@ -3,6 +3,7 @@ package com.iketang.icouse;
 import android.app.Application;
 import android.content.Context;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.tendcloud.tenddata.TCAgent;
 
 /**
@@ -17,6 +18,8 @@ public class KetangApplication extends Application {
         super.onCreate();
         TCAgent.init(this.getApplicationContext());
         TCAgent.setReportUncaughtExceptions(false);
+
+        Fresco.initialize(this);
 
     }
 
