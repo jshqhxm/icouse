@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/icouse.iml" filepath="$PROJECT_DIR$/icouse.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jockeyjslibrary/jockeyjslibrary.iml" filepath="$PROJECT_DIR$/jockeyjslibrary/jockeyjslibrary.iml" />
     </modules>
   </component>
 </project>
