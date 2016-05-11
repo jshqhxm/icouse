@@ -29,7 +29,9 @@ public class WebMainActivity extends BaseActivity {
 
     private Jockey jockey;
 
-    String router ="http://demo.bw-xt.com/wap5/";
+
+    String router ="http://kt.cufehl.com/wap5/";
+//    String router ="http://demo.bw-xt.com/wap5/";
 
     @Override
     public int getLayoutRes() {
@@ -47,7 +49,7 @@ public class WebMainActivity extends BaseActivity {
         webView.getSettings().setAllowFileAccess(true);
 
         String ua = webView.getSettings().getUserAgentString();
-        webView.getSettings().setUserAgentString(ua + "; 5iApp/11.11");
+//        webView.getSettings().setUserAgentString(ua + "; 5iApp/11.11");
 
         jockey = JockeyImpl.getDefault();
         jockey.configure(webView);
