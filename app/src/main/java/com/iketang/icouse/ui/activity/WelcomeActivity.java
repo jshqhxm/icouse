@@ -43,7 +43,8 @@ public class WelcomeActivity extends BaseActivity {
             @Override
             public void run() {
 //                Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
-                Intent intent = new Intent(WelcomeActivity.this, WebMainActivity.class);
+//                Intent intent = new Intent(WelcomeActivity.this, WebMainActivity.class);
+                Intent intent = new Intent(WelcomeActivity.this, GuideVideoActivity.class);
                 startActivity(intent);
                 finish();
             }
