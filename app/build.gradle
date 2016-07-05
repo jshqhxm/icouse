@@ -1,4 +1,8 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
+
+def dbflow_version = "3.0.1"
+
 
 android {
     compileSdkVersion 23
@@ -29,10 +33,20 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:23.1.1'
 
 
+    apt "com.github.Raizlabs.DBFlow:dbflow-processor:${dbflow_version}"
+    compile "com.github.Raizlabs.DBFlow:dbflow-core:${dbflow_version}"
+    compile "com.github.Raizlabs.DBFlow:dbflow:${dbflow_version}"
+
+
     compile 'com.jakewharton:butterknife:7.0.1'
 
 //    compile 'com.facebook.fresco:fresco:0.9.0'
     compile 'com.facebook.fresco:fresco:0.10.0'
+
+
+    //视频播放器
+    compile 'tv.danmaku.ijk.media:ijkplayer-java:0.5.1'
+    compile 'tv.danmaku.ijk.media:ijkplayer-armv7a:0.5.1'
 
 
     compile files('libs/TalkingData_Analytics_Android_SDK.jar')
