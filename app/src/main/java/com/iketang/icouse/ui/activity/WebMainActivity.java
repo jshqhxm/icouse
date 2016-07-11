@@ -12,6 +12,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
+import com.iketang.icouse.IcString;
 import com.iketang.icouse.R;
 import com.jockeyjs.Jockey;
 import com.jockeyjs.JockeyHandler;
@@ -39,8 +40,7 @@ public class WebMainActivity extends BaseActivity {
     private Jockey jockey;
 
 
-    //    String router ="http://kt.cufehl.com/wap5/";
-    String router = "http://demo.bw-xt.com/wap5/";
+    String router = IcString.HOME_PAGE;
 
     @Override
     public int getLayoutRes() {
@@ -121,21 +121,6 @@ public class WebMainActivity extends BaseActivity {
     public boolean onKeyUp(int keyCode, KeyEvent event) {
 
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-
-            //TODO test <code></code>
-
-            Map<String, String> playload = new HashMap<>();
-
-            playload.put("name", "android");
-            playload.put("age", "100");
-
-
-            if (null != jockey){
-                jockey.send("event-test", webView, playload);
-                return true;
-            }
-
-
 
             if (webView.canGoBack()) {
                 webView.goBack();
