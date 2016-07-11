@@ -4,6 +4,8 @@ import android.app.Application;
 import android.content.Context;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
+import com.raizlabs.android.dbflow.config.FlowConfig;
+import com.raizlabs.android.dbflow.config.FlowManager;
 import com.tendcloud.tenddata.TCAgent;
 
 /**
@@ -20,6 +22,10 @@ public class KetangApplication extends Application {
         TCAgent.setReportUncaughtExceptions(false);
 
         Fresco.initialize(this);
+
+        FlowManager.init(new FlowConfig.Builder(this).build());
+
+
 
     }
 
