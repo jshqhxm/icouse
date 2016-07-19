@@ -21,3 +21,13 @@ allprojects {
         maven { url "https://jitpack.io" }
     }
 }
+
+
+ext {
+    compileSdkVersion = 23
+    buildToolsVersion = "23.0.1"
+    minSdkVersion = 15
+    targetSdkVersion = 23
+    versionCode = 34
+    versionName = "v2.6.1"
+}

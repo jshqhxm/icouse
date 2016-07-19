@@ -5,23 +5,108 @@ def dbflow_version = "3.0.1"
 
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+
+    signingConfigs {
+        myConfig {
+            storeFile file('tools/debug.keystore')      //签名文件
+            storePassword "123456"
+            keyAlias "bwxt"
+            keyPassword "123456"  //签名密码
+        }
+    }
+
 
     defaultConfig {
         applicationId "com.iketang.icouse"
-        minSdkVersion 15
-        targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+
+        buildConfigField 'String','API_SERVER_URL','"http://demo2.bw-xt.com/"'
     }
+
     buildTypes {
+
+
+        debug {
+
+        }
 
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+
+        dev {
+            applicationIdSuffix ".dev"
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'),  'proguard-rules.pro'
+        }
+
+
     }
+
+    // 这里是为了不同过的版本设置一些特殊的参数，并不直接和 buildType 关联。
+    //例如：使用 buildType 中的 dev 版本，也可以使用 flavors_release 里面设置的自定义参数。这需要自己按照需求制定。
+    productFlavors{
+
+        pro {
+            applicationId = "com.iketang.icouse.pro"
+        }
+
+        free {
+            applicationId = "com.iketang.icouse.free"
+
+//            resValue "string", "app_name", "TShow测试"
+
+        }
+
+    }
+
+
+
+
+    //Rename the apk with the version name
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            output.outputFile = new File(
+                    output.outputFile.parent,
+                    "iketang-${variant.buildType.name}-${variant.versionName}-${variant.productFlavors[0].name}.apk".toLowerCase())
+        }
+    }
+
+
+//    // rename the apk with the version name
+//    // add output file sub folder by build type
+//    applicationVariants.all { variant ->
+//        variant.outputs.each { output ->
+//            output.outputFile = new File(
+//                    output.outputFile.parent + "/${variant.buildType.name}",
+//                    "ganchai-${variant.buildType.name}-${variant.versionName}-${variant.productFlavors[0].name}.apk".toLowerCase())
+//        }
+//    }
+
+
+//    android.applicationVariants.all { variant ->
+//        def buildType = variant.buildType
+//        def encoding = java.nio.charset.Charset.defaultCharset().toString()
+//        if (buildType.applicationIdSuffix) {
+//            def defaultPackageId = variant.packageName.replaceAll(buildType.applicationIdSuffix,'')
+//            variant.mergeResources.doLast {
+//                def f = file("${buildDir}/intermediates/res/${variant.dirName}/values/values.xml")
+//                String content = f.getText(encoding)
+//                content = content.replaceAll('来往','来往Beta')
+//                f.write(content,encoding)
+//            }
+//        }
+//    }
+
+
+
 }
 
 dependencies {
